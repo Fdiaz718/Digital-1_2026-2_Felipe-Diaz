@@ -15,9 +15,7 @@ Mi trabajo individual y grupal está enfocado en el diseño del driver de pantal
 
 A continuación, se listan mis entregas y avances a lo largo del semestre:
 
-### Entregas realizadas
+### Tareas
 * [Tarea 1: Diagrama de bloques general del sistema](./entregas/01_diagrama_bloques.md)
   * Descripción: Diseño de la máquina de estados principal, verificación de periféricos de hardware, selección de menús y flujo de ejecución general (Play Loop).
 
-### En desarrollo
-* [Tarea 2: Diagrama de bloques del driver de pantalla](./entregas/02_driver_pantalla.md)
