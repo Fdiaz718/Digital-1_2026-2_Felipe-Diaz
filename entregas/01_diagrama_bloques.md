@@ -7,7 +7,7 @@ El objetivo de este esquema es definir la arquitectura desde el encendido hasta 
 
 ## Esquema propuesto
 
-![Diagrama de bloques general](../diagrama_de_bloques_general.png)
+![Diagrama de bloques general](./diagrama_de_bloques_general.png)
 
 ## Flujo del sistema
 El diagrama contempla las siguientes etapas de control:
