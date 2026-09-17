@@ -17,5 +17,5 @@ A continuación, se listan mis entregas y avances a lo largo del semestre:
 
 ### Tareas
 * [Tarea 1: Diagrama de bloques general del sistema](./entregas/01_diagrama_bloques.md)
-  * Descripción: Diseño de la máquina de estados principal, verificación de periféricos de hardware, selección de menús y flujo de ejecución general (Play Loop).
+  * Descripción: Diseño de propuesta de diagrama de bloques, explicación sencilla del flujo de sistema.
 
