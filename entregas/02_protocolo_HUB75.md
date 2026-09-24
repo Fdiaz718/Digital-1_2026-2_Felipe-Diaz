@@ -41,5 +41,23 @@ Este protocolo exige una sincronización rigurosa generada desde el hardware de 
 4. Mientras la fila anterior brilla, se envían 64 pulsos de `CLK` empujando los datos RGB de la *nueva* fila.
 5. Se envía un pulso de `LAT` para fijar los datos.
 6. El ciclo se repite a altísima velocidad (más de 1000 veces por segundo) para engañar al ojo humano y crear una imagen estática estable.
-![HUB75 timing](./02_wd1.png)
+
+## Reglas de Temporización y Operación
+Para garantizar una correcta visualización y evitar artefactos gráficos, el control de timing debe seguir estas condiciones:
+
+* **Sincronismo de Datos:** Las únicas señales que dependen estrictamente de los flancos del reloj (`clk`) son las líneas de datos `rgb`. Las señales de control (`oe`, `latch` y `addr`) pueden variar de forma asíncrona con respecto al reloj.
+* **Prevención de "Ghosting":** Si el direccionamiento de fila (`addr`) cambia mientras la pantalla está encendida (`oe` en estado lógico bajo), o si se fija una nueva fila en ese instante, se producirá un efecto de "fantasmeo" o solapamiento de líneas[cite: 10]. Por lo tanto, `latch` y `addr` deben cambiar única y exclusivamente cuando `oe` está deshabilitado (estado lógico alto).
+* **Compatibilidad de Hardware:** Algunos paneles específicos exigen por diseño que la señal `oe` se encuentre en estado alto mientras la señal `latch` esté en estado alto.
+* **Control de Brillo:** El nivel de brillo de los LEDs depende directamente de la cantidad de tiempo que `oe` permanece en estado bajo. Para evitar variaciones de luminosidad entre distintas filas, el tiempo de activación de `oe` debe ser estrictamente igual para cada una de ellas.
+* **Precisión del Reloj:** Se debe generar exactamente la misma cantidad de ciclos de reloj como píxeles tenga el ancho de la pantalla antes de activar el `latch` (por ejemplo, 64 ciclos)[cite: 10]. Un número menor desplazará la imagen; los ciclos adicionales emitidos después del pulso de `latch` serán ignorados por el hardware del panel.
+* ![HUB75 timing](./02_wd1.png)
+
+## 3. Implementación Síncrona Sugerida
+El segundo diagrama propone una alternativa de diseño donde las señales de control (`oe`, `latch` y `addr`) se tratan de manera síncrona con el reloj. 
+
+La principal ventaja de este enfoque es que elimina la necesidad de implementar un reloj condicionado (gated clock) en el hardware. Bajo este esquema, la señal `oe` mantiene una longitud constante (calculada como el ancho del panel menos 3 ciclos de reloj), simplificando el diseño de la máquina de estados en el código HDL.
+
 ![HUB75 timing suggestion](./02_wd2.png)
+
+Informacion tomada de [Moonbaseotago](https://ejemplo.com](http://www.moonbaseotago.com/hub75/):
+
