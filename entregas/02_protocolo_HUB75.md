@@ -32,7 +32,7 @@ Este protocolo exige una sincronización rigurosa generada desde el hardware de 
 * **Output Enable (`OE`):** Señal activa en bajo. Debe ponerse en ALTO (apagar LEDs) mientras se cambia de fila para evitar un efecto de "fantasmeo" (ghosting) o parpadeo. También se modula por ancho de pulso (PWM) para controlar el brillo general o la profundidad de color.
 * **Latch / Strobe (`LAT`):** Un pulso rápido en alto al final de los 64 ciclos de reloj para aplicar los datos guardados en los registros a los LEDs visibles.
 * **Direccionamiento de Fila (`A, B, C, D, E`):** Pines binarios que seleccionan cuál de las 32 filas físicas de la matriz se va a encender en ese instante.
-![Puerto HUB75](lmaoxd.png)
+![Puerto HUB75](./02_d1.svg)
 
 ### Máquina de Estados del Ciclo de Barrido
 1. `OE` = 1 (Pantalla apagada).
