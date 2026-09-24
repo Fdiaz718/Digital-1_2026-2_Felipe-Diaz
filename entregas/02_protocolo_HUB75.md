@@ -14,7 +14,7 @@ El procesador principal actúa como dispositivo Maestro (Controller) y la FPGA c
 * La línea `MISO` (`CIPO`) se mantiene inactiva (o en un estado constante) ya que nuestro driver de pantalla solo recibe datos y no necesita responder al controlador[cite: 8, 9].
 * Una vez finalizada la transmisión del paquete de datos, la señal `CS` (o `NSS`) vuelve a su estado inactivo en alto[cite: 8, 9].
 
-![Diagrama de tiempos SPI](lol.png)
+![Diagrama de tiempos SPI](./02_spi_timing.png)
 
 ### 1.2. Protocolo de Actualización de Sprites
 El desplazamiento de objetos gráficos en pantalla (sprites) requiere la sobrescritura de los datos previos en memoria. El flujo de actualización ejecutado por la lógica del sistema consta de los siguientes pasos secuenciales:
@@ -41,3 +41,5 @@ Este protocolo exige una sincronización rigurosa generada desde el hardware de 
 4. Mientras la fila anterior brilla, se envían 64 pulsos de `CLK` empujando los datos RGB de la *nueva* fila.
 5. Se envía un pulso de `LAT` para fijar los datos.
 6. El ciclo se repite a altísima velocidad (más de 1000 veces por segundo) para engañar al ojo humano y crear una imagen estática estable.
+![HUB75 timing](./02_wd1.png)
+![HUB75 timing suggestion](./02_wd2.png)
