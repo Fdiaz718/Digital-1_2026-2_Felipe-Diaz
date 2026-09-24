@@ -59,5 +59,5 @@ La principal ventaja de este enfoque es que elimina la necesidad de implementar 
 
 ![HUB75 timing suggestion](./02_wd2.png)
 
-Informacion tomada de [Moonbaseotago](https://ejemplo.com](http://www.moonbaseotago.com/hub75/):
+Informacion tomada de [Moonbaseotago](http://www.moonbaseotago.com/hub75/)
 
