@@ -9,10 +9,10 @@ La capa física opera bajo el estándar de comunicación SPI; sin embargo, el m�
 ### 1.1. Recepción de Datos y Diagrama de Tiempos
 El procesador principal actúa como dispositivo Maestro (Controller) y la FPGA como Esclavo (Peripheral). La comunicación sigue el diagrama de tiempos estándar:
 * La señal de selección de chip (`CS` o `NSS`) se pone en estado bajo (0V) para indicar el inicio de una transmisión activa.
-* El Controlador genera la señal de reloj (`SCK`)[cite: 8, 9].
-* Los datos gráficos se envían a través de la línea `MOSI` (también llamada `COPI`) y son muestreados por nuestro módulo en los flancos correspondientes del reloj[cite: 8, 9].
-* La línea `MISO` (`CIPO`) se mantiene inactiva (o en un estado constante) ya que nuestro driver de pantalla solo recibe datos y no necesita responder al controlador[cite: 8, 9].
-* Una vez finalizada la transmisión del paquete de datos, la señal `CS` (o `NSS`) vuelve a su estado inactivo en alto[cite: 8, 9].
+* El Controlador genera la señal de reloj (`SCK`)].
+* Los datos gráficos se envían a través de la línea `MOSI` (también llamada `COPI`) y son muestreados por nuestro módulo en los flancos correspondientes del reloj.
+* La línea `MISO` (`CIPO`) se mantiene inactiva (o en un estado constante) ya que nuestro driver de pantalla solo recibe datos y no necesita responder al controlador.
+* Una vez finalizada la transmisión del paquete de datos, la señal `CS` (o `NSS`) vuelve a su estado inactivo en alto.
 
 ![Diagrama de tiempos SPI](./02_spi_timing.png)
 
